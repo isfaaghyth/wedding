@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Yesteryear:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Isfha Rani - August 16th, 2020</title>
+</head>
+<body>
+    <section id="hero">
+        <div class="hero-container" data-aos="fade-up" style="padding: 10%;">
+            <h5>the wedding of</h5>
+          <h1>Isfha<br>Rani</h1>
+          <h2 id="demo">0 day 0 hr 0 min</h2>
+        </div>
+    </section>
+
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12" id="container-address">
+                        <h6>insyaAllah will be held at</h6>
+                        <h4>Taman Narogong Indah, Bekasi Timur</h4>
+                        <h5><b>AUGUST 16TH, 2020</b></h5>
+                    </div>
+                    <div class="cta" id="cta">
+                        <div id="notify">
+                            <h6>We are sorry</h6>
+                            <p>
+                                With full respect and honor and as the form of
+                            anticipation of COVID-19 danger, we profoundly
+                            apologize for the inability of inviting you and
+                            we would like to ask for your fond prayers
+                            and wish for us.<br>
+                            </p>
+                            <hr>
+                            <p class="mb-0"><b>May Allah bless us with many blessings for us all. Aamiin allahumma aamiin</b></p>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="container-address">
+                        <h6><b>Please drop your best wishes for us!</b></h6><br>
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                            <div class="form-row">
+                              <div class="col-md-6 form-group">
+                                <input type="text" name="name" class="form-control" id="username" placeholder="@yourinstagram" />
+                                <div class="validate"></div>
+                              </div>
+                              <div class="col-md-6 form-group">
+                                <input type="email" class="form-control" name="email" id="fullname" placeholder="Full Name" />
+                                <div class="validate"></div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <textarea class="form-control" name="message" rows="3" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                              <div class="validate"></div>
+                            </div>
+                            <a href="" class="btn-buy">Send</a>
+                          </form>
+                    </div>
+                  </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Aug 16, 2020 09:00:00").getTime();
+        
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+          // Get today's date and time
+          var now = new Date().getTime();
+        
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+        
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+          // Display the result in the element with id="demo"
+          document.getElementById("demo").innerHTML = days + " day " + hours + " hr "
+          + minutes + " min";
+        
+          // If the count down is finished, write some text
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+        </script>
+
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
