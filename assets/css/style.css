@@ -469,7 +469,7 @@ h4 {
   }
 
   .container {
-    width: 80% !important;
+    width: 90% !important;
   }
 
   #main {
@@ -745,7 +745,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: #86b03c;
+  background: #d12a46;
   padding: 50px;
   margin-bottom: 30px;
 }
