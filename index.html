@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="col-md-12" id="container-address">
-                        <h5><b>Berikan doa terbaikmu!</b></h5><br>
+                        <h5><b>Berikan doa terbaikmu! <a href="thankyou.html">{{ total }}</a></b></h5><br>
                         <div v-if="data.status === 200">
                           <div class="alert alert-primary" role="alert">
                             {{ toast }}
@@ -76,7 +76,11 @@
                               <textarea class="form-control" id="message"  v-model="message" name="message" rows="3" data-rule="required" data-msg="Ucapan & doa" placeholder="Ucapan & doa"></textarea>
                               <div class="validate"></div>
                             </div>
-                            <button class="btn btn-primary" type="button" v-on:click="send(username, fullname, message)">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                            <div class="d-flex align-items-center">
+                              <button class="btn btn-primary" type="button" v-on:click="send(username, fullname, message)">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                              <div class="spinner-border ml-auto" role="status" aria-hidden="true" v-if="data.loading === true"></div>
+                              <div v-else></div>
+                            </div>
                             <br><br>
                           </form>
                         </div>
@@ -179,11 +183,14 @@
         data: {
           fullname: '',
           toast: '',
-          data: ''
+          total: 0,
+          data: '',
+          loading: false
         },
         el: '#irghiath',
         methods: {
           send: function(username, fullname, message) {
+            this.loading = true;
             axios.post('https://irghiath.herokuapp.com/prayer', {
               avatar: 'avatar.jpg',
               name: fullname,
@@ -191,12 +198,23 @@
               message: message,
               
             }).then(response => {
+                this.loading = false;
                 this.toast = `Terima kasih ${fullname} atas doa terbaiknya! 😊`;
                 this.data = {
                   status: 200
                 };
               })
+          },
+
+          count: function() {
+            axios.get('https://irghiath.herokuapp.com/prayer')
+              .then(response => {
+                this.total = response.length + 100;
+              })
           }
+        },
+        beforeMount() {
+          count()
         }
       })
     </script>
