@@ -31,34 +31,13 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 
 /* Style the Image Used to Trigger the Modal */
-#myImg1 {
+.myImg {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-#myImg2 {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#myImg3 {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#myImg4 {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#myImg1:hover {opacity: 0.7;}
-#myImg2:hover {opacity: 0.7;}
-#myImg3:hover {opacity: 0.7;}
-#myImg4:hover {opacity: 0.7;}
+.myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
 .modal {
