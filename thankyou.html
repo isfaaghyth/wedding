@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:wght@300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Yesteryear:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <title>Isfha Rani - August 16th, 2020</title>
+</head>
+<body style="background-color: #f8f8f8;"> 
+    <div id="irghiath">
+    <br>
+      <main id="main">
+        <section id="about" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-12" id="titlemessagelist">
+                        <h4>Terima kasih, guys!</h4>
+                        <hr>
+                    </div>
+                    <div class="messagelist" id="messagelist" style="background-color: white;">
+                        <div class="alert alert-warning" role="alert" v-show="isEmpty">
+                            belum ada data.
+                          </div>
+                      <div id="notify" class="row">
+                        <div class="row row-cols-1 row-cols-md-3">
+                            <div v-for="prayer in data.slice().reverse()">
+                                <div class="col mb-4">
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <h5 class="card-title">{{ prayer.message }}</h5>
+                                      <p class="card-text">
+                                        <img v-bind:src="prayer.avatar" class="rounded-circle" alt="img" style="width: 30px; height: 30px;">
+                                        <small class="text-muted">{{ prayer.username }}</small>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                    <div class="col-md-12" id="container-address">
+                      <h4>جَزَاكُمُ اللهُ</h4>
+                      <img src="assets/img/footer.png" width="200px">
+                    </div>
+                  </div>
+            </div>
+        </section>    
+    </main>
+    </div>
+
+    <script>
+      var prod = 'https://irghiath.herokuapp.com/prayer';      
+      var debug = 'http://localhost:1337/prayer';    
+      var env = prod;  
+
+      new Vue({
+        data: {
+          data: [],
+          isEmpty: true,
+        },
+        el: '#irghiath',
+        methods: {
+          getPrayer: function() {
+            axios.get(env)
+            .then(response => {
+                this.data = response.data;
+
+                if (this.data.length > 0) {
+                    this.isEmpty = false;
+                }
+            })
+          }
+        },
+        mounted() {
+          this.getPrayer()
+        }
+      })
+    </script>
+</body>
+</html>

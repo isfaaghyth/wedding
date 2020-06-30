@@ -204,9 +204,6 @@ ul.timeline > li:before {
   transition: all 0.5s ease-in-out;
   padding: 14px 0;
   background: rgba(255, 255, 255, 0);
-}
-
-#header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -319,6 +316,11 @@ ul.timeline > li:before {
 #container-address {
   padding: 50px;
 }
+
+#titlemessagelist {
+  padding: 30px;
+}
+
 
 h4 {
   font-weight: bold;
@@ -726,6 +728,49 @@ section {
 }
 
 .pray .cta-btn:hover {
+  background: #aacd6b;
+  border-color: #aacd6b;
+}
+
+/*--------------------------------------------------------------
+# messagelist
+--------------------------------------------------------------*/
+.messagelist {
+  background: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 30px;
+}
+
+.messagelist h3 {
+  color: #444444;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.messagelist h4 {
+  color: #444444;
+}
+
+.messagelist p {
+  color: #444444;
+}
+
+.messagelist .cta-btn {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 25px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.messagelist .cta-btn:hover {
   background: #aacd6b;
   border-color: #aacd6b;
 }
