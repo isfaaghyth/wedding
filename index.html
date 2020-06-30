@@ -28,7 +28,8 @@
         </div>
     </section>
 
-    <main id="main">
+    <div id="irghiath">
+      <main id="main">
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
                 <div class="row">
@@ -55,9 +56,10 @@
                         <h5><b>Berikan doa terbaikmu!</b></h5><br>
                         <div v-if="data.status === 200">
                           <div class="alert alert-primary" role="alert">
-                            Terima kasih {{nama}} atas doa terbaiknya! 😊
+                            {{ toast }}
                           </div>
                         </div>
+                        <div v-else></div>
                         <div class="contact">
                           <form action="index.php" method="post" role="form" class="php-email-form">
                             <div class="form-row">
@@ -74,7 +76,7 @@
                               <textarea class="form-control" id="message"  v-model="message" name="message" rows="3" data-rule="required" data-msg="Ucapan & doa" placeholder="Ucapan & doa"></textarea>
                               <div class="validate"></div>
                             </div>
-                            <button class="btn btn-primary" type="button" v-on:click="send()">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                            <button class="btn btn-primary" type="button" v-on:click="send(username, fullname, message)">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                             <br><br>
                           </form>
                         </div>
@@ -170,9 +172,33 @@
     
         </section>    
     </main>
+    </div>
 
     <script>
-
+      new Vue({
+        data: {
+          fullname: '',
+          toast: '',
+          data: ''
+        },
+        el: '#irghiath',
+        methods: {
+          send: function(username, fullname, message) {
+            axios.post('https://irghiath.herokuapp.com/prayer', {
+              avatar: 'avatar.jpg',
+              name: fullname,
+              username: username,
+              message: message,
+              
+            }).then(response => {
+                this.toast = `Terima kasih ${response[0].name} atas doa terbaiknya! 😊`;
+                this.data = {
+                  status: 200
+                };
+              })
+          }
+        }
+      })
     </script>
 
     <script>
