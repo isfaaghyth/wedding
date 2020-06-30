@@ -53,10 +53,15 @@
                         </div>
                     </div>
                     <div class="col-md-12" id="container-address">
-                        <h5><b>Berikan doa terbaikmu! <a href="thankyou.html">{{ total }}</a></b></h5><br>
-                        <div v-if="data.status === 200">
+                        <h5><b>Berikan doa terbaikmu!</b></h5><br>
+                        <div v-show="success">
                           <div class="alert alert-primary" role="alert">
-                            {{ toast }}
+                            Terima kasih <b>{{ fullname }}</b> atas doa terbaiknya! 😊
+                          </div>
+                        </div>
+                        <div v-show="error">
+                          <div class="alert alert-warning" role="alert">
+                            Yah, ada yang belum ke isi nih guys ☹️
                           </div>
                         </div>
                         <div v-else></div>
@@ -64,24 +69,26 @@
                           <form action="index.php" method="post" role="form" class="php-email-form">
                             <div class="form-row">
                               <div class="col-md-6 form-group">
-                                <input type="text" name="username" class="form-control" id="username"  v-model="username" placeholder="@akuninstagram" />
+                                <input type="text" name="username" class="form-control" id="username"  v-model="username" placeholder="@akuninstagram" required/>
                                 <div class="validate"></div>
                               </div>
                               <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" name="fullname" id="fullname"  v-model="fullname" placeholder="Nama" />
+                                <input type="text" class="form-control" name="fullname" id="fullname"  v-model="fullname" placeholder="Nama" required/>
                                 <div class="validate"></div>
                               </div>
                             </div>
                             <div class="form-group">
-                              <textarea class="form-control" id="message"  v-model="message" name="message" rows="3" data-rule="required" data-msg="Ucapan & doa" placeholder="Ucapan & doa"></textarea>
+                              <textarea class="form-control" id="message"  v-model="message" name="message" rows="3" data-rule="required" data-msg="Ucapan & doa" placeholder="Ucapan & doa" required></textarea>
                               <div class="validate"></div>
                             </div>
                             <div class="d-flex align-items-center">
                               <button class="btn btn-primary" type="button" v-on:click="send(username, fullname, message)">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                              <div class="spinner-border ml-auto" role="status" aria-hidden="true" v-if="data.loading === true"></div>
-                              <div v-else></div>
+                              <div class="spinner-border ml-auto" role="status" aria-hidden="true" v-show='loading'></div>
                             </div>
-                            <br><br>
+                            <br>
+                            <div v-if="data.status === 200">
+                              <a href="thankyou.html"><i class="fa fa-envelope" aria-hidden="true"></i> Lihat doa</a>
+                            </div>
                           </form>
                         </div>
                     </div>
@@ -179,42 +186,68 @@
     </div>
 
     <script>
+      var prod = 'https://irghiath.herokuapp.com/prayer';      
+      var debug = 'http://localhost:1337/prayer';    
+      var env = prod;  
+
       new Vue({
         data: {
           fullname: '',
-          toast: '',
           total: 0,
           data: '',
+          success: false,
+          error: false,
           loading: false
         },
         el: '#irghiath',
         methods: {
           send: function(username, fullname, message) {
+            if (username === '' || fullname === '' || message === '') {
+              this.error = true;
+
+              setTimeout(() => {
+                this.error = false;
+              }, 2000)
+
+              return;
+            }
+
             this.loading = true;
-            axios.post('https://irghiath.herokuapp.com/prayer', {
-              avatar: 'avatar.jpg',
+
+            axios.get(`https://www.instagram.com/${username}/?__a=1`)
+            .then(response => {
+                return response.data.graphql.user.profile_pic_url;
+            })
+            .then(response => {
+              axios.post(env, {
+              avatar: response,
               name: fullname,
               username: username,
               message: message,
-              
             }).then(response => {
                 this.loading = false;
-                this.toast = `Terima kasih ${fullname} atas doa terbaiknya! 😊`;
-                this.data = {
-                  status: 200
-                };
+                this.total += 1;
+                this.success = true;
+
+                setTimeout(() => {
+                  this.success = false;
+
+                  this.username = this.fullname = this.message = '';
+                  event.target.reset();
+                }, 3000)
               })
+            })
           },
 
           count: function() {
-            axios.get('https://irghiath.herokuapp.com/prayer')
+            axios.get(env)
               .then(response => {
-                this.total = response.length + 100;
+                this.total = response.data.length;
               })
           }
         },
-        beforeMount() {
-          count()
+        mounted() {
+          this.count()
         }
       })
     </script>
