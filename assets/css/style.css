@@ -322,7 +322,7 @@ ul.timeline > li:before {
   font-size: 150px;
   font-weight: 100;
   line-height: 150px;
-  font-family: 'Yesteryear';
+  font-family: 'Satisfy';
   color: #fff;
 }
 
@@ -675,7 +675,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: #c11f2f;
+  background: #383838;
   padding: 50px;
   margin-bottom: 30px;
 }
@@ -1405,17 +1405,12 @@ section {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type="submit"] {
-  background: #94c045;
+.contact .php-email-form button[type="button"] {
   border: 0;
   padding: 10px 24px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
-}
-
-.contact .php-email-form button[type="submit"]:hover {
-  background: #aacd6b;
 }
 
 @-webkit-keyframes animate-loading {

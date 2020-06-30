@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:wght@300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Yesteryear:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:wght@300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Yesteryear:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
@@ -13,13 +13,15 @@
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <title>Isfha Rani - August 16th, 2020</title>
 </head>
 <body>  
     <section id="hero">
         <div class="hero-container" data-aos="fade-up" style="padding: 10%;">
           <h5>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h5>
-          <h5>pernikahan</h5>
+          <h5>walimatul ursy</h5>
             <br>
           <h1>Isfha<br>Rani</h1>
           <p id="demo" style="color: white; font-size: 20px;">0 hari 0 jam 0 menit</p>
@@ -31,9 +33,9 @@
             <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-md-12" id="container-address">
-                        <h6>insyaAllah akan dilaksanakan pada</h6>
-                        <h4>Narogong, Bekasi Timur</h4>
+                        <h6>InsyaAllah akan dilaksanakan pada</h6>
                         <h5><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <b>Minggu, 16 agustus 2020</b></h5>
+                        <h4>Narogong, Bekasi.</h4>
                         <a href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20200816T095000%2F20200816T113000&text=Isfha%20Rani%20Wedding&details=Please%20join%20us%20on%20instagram%20live%20at%20@isfaaghyth.">
                           
                         </a>
@@ -51,23 +53,28 @@
                     </div>
                     <div class="col-md-12" id="container-address">
                         <h5><b>Berikan doa terbaikmu!</b></h5><br>
+                        <div v-if="data.status === 200">
+                          <div class="alert alert-primary" role="alert">
+                            Terima kasih {{nama}} atas doa terbaiknya! 😊
+                          </div>
+                        </div>
                         <div class="contact">
-                          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                          <form action="index.php" method="post" role="form" class="php-email-form">
                             <div class="form-row">
                               <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="username" placeholder="@yourinstagram" />
+                                <input type="text" name="username" class="form-control" id="username"  v-model="username" placeholder="@akuninstagram" />
                                 <div class="validate"></div>
                               </div>
                               <div class="col-md-6 form-group">
-                                <input type="email" class="form-control" name="email" id="fullname" placeholder="Nama" />
+                                <input type="text" class="form-control" name="fullname" id="fullname"  v-model="fullname" placeholder="Nama" />
                                 <div class="validate"></div>
                               </div>
                             </div>
                             <div class="form-group">
-                              <textarea class="form-control" name="message" rows="3" data-rule="required" data-msg="Please write something for us" placeholder="Pesan"></textarea>
+                              <textarea class="form-control" id="message"  v-model="message" name="message" rows="3" data-rule="required" data-msg="Ucapan & doa" placeholder="Ucapan & doa"></textarea>
                               <div class="validate"></div>
                             </div>
-                            <a href="" class="btn btn-primary">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i>                            </a>
+                            <button class="btn btn-primary" type="button" v-on:click="send()">Kirim Doa <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                             <br><br>
                           </form>
                         </div>
@@ -98,7 +105,7 @@
                     </div>
                     <div class="pray" id="pray">
                       <div id="notify">
-                        <h4>#TheGhiath</h4>
+                        <h4>Ir. Ghiath</h4>
                           <p>Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir.</p>
                           <hr>
                           <p class="mb-0"><b>QS.AR-RUM 30:21</b></p>
@@ -141,6 +148,10 @@
     
         </section>    
     </main>
+
+    <script>
+
+    </script>
 
     <script>
         var countDownDate = new Date("Aug 16, 2020 09:00:00").getTime();
