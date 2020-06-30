@@ -9,7 +9,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
   color: #444444;
 }
 
@@ -23,7 +23,112 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Image modal
+--------------------------------------------------------------*/
+
+/* Style the Image Used to Trigger the Modal */
+#myImg1 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg2 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg3 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg4 {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg1:hover {opacity: 0.7;}
+#myImg2:hover {opacity: 0.7;}
+#myImg3:hover {opacity: 0.7;}
+#myImg4:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -36,7 +141,7 @@ ul.timeline {
 
 ul.timeline a {
   font-weight: bold;
-  color: #1b7e49;
+  color: #736412;
 }
 
 ul.timeline:before {
@@ -59,7 +164,7 @@ ul.timeline > li:before {
   display: inline-block;
   position: absolute;
   border-radius: 50%;
-  border: 3px solid #1b7e49;
+  border: 3px solid #736412;
   margin-top: 3px;
   left: 20px;
   width: 20px;
@@ -454,7 +559,7 @@ ul.timeline > li:before {
 h4 {
   font-weight: bold;
   font-family: 'Open Sans';
-  color: #1b7e49;
+  color: #736412;
 }
 
 #notify h6 {
@@ -785,7 +890,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: #d12a46;
+  background: #c11f2f;
   padding: 50px;
   margin-bottom: 30px;
 }
@@ -815,6 +920,48 @@ section {
 }
 
 .cta .cta-btn:hover {
+  background: #aacd6b;
+  border-color: #aacd6b;
+}
+
+/*--------------------------------------------------------------
+# pray
+--------------------------------------------------------------*/
+.pray {
+  background: #f8f8f8;
+  padding: 50px;
+  margin-bottom: 30px;
+}
+
+.pray h3 {
+  color: #444444;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.pray h4 {
+  color: #444444;
+}
+
+.pray p {
+  color: #444444;
+}
+
+.pray .cta-btn {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 28px;
+  border-radius: 25px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.pray .cta-btn:hover {
   background: #aacd6b;
   border-color: #aacd6b;
 }
