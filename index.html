@@ -202,6 +202,26 @@
         },
         el: '#irghiath',
         methods: {
+          sendData: function (username, fullname, message, avatar) {
+              axios.post(env, {
+                avatar: avatar,
+                name: fullname,
+                username: _username,
+                message: message,
+              }).then(response => {
+                  this.loading = false;
+                  this.total += 1;
+                  this.success = true;
+                  this.data = { status: 200 }
+
+                  setTimeout(() => {
+                    this.success = false;
+
+                    this.username = this.fullname = this.message = '';
+                    event.target.reset();
+                  }, 5000)
+                })
+          },
           send: function(username, fullname, message) {
             if (username === '' || fullname === '' || message === '') {
               this.error = true;
@@ -225,25 +245,13 @@
                 return response.data.graphql.user.profile_pic_url;
             })
             .then(response => {
-              axios.post(env, {
-              avatar: response,
-              name: fullname,
-              username: username,
-              message: message,
-            }).then(response => {
-                this.loading = false;
-                this.total += 1;
-                this.success = true;
-                this.data = { status: 200 }
-
-                setTimeout(() => {
-                  this.success = false;
-
-                  this.username = this.fullname = this.message = '';
-                  event.target.reset();
-                }, 5000)
-              })
+              sendData(username, fullname, message, avatar)
             })
+            .catch(error => {
+              var initialName = fullname.charAt(0);
+              var _avatar = `https://avatars.dicebear.com/api/initials/${initialName}.svg`;
+              sendData(username, fullname, message, _avatar)
+            }) 
           }
         }
       })
