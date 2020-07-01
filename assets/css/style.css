@@ -181,7 +181,7 @@ ul.timeline > li:before {
 }
 
 #main {
-  margin-top: 70px;
+  margin-top: 80px;
   z-index: 3;
   position: relative;
 }
@@ -295,7 +295,7 @@ ul.timeline > li:before {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 150px;
+  font-size: 140px;
   font-weight: 100;
   line-height: 150px;
   font-family: 'Satisfy';
