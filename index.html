@@ -70,7 +70,7 @@
                           <form action="index.php" method="post" role="form" class="php-email-form">
                             <div class="form-row">
                               <div class="col-md-6 form-group">
-                                <input type="text" name="username" class="form-control" id="username"  v-model="username" placeholder="@akuninstagram" required/>
+                                <input type="text" name="username" class="form-control" id="username"  v-model="username" placeholder="@akuninstagram (optional)"/>
                                 <div class="validate"></div>
                               </div>
                               <div class="col-md-6 form-group">
@@ -194,6 +194,8 @@
       new Vue({
         data: {
           fullname: '',
+          username: '',
+          message: '',
           total: 0,
           data: '',
           success: false,
@@ -203,7 +205,7 @@
         el: '#irghiath',
         methods: {
           send: function(username, fullname, message) {
-            if (username === '' || fullname === '' || message === '') {
+            if (fullname === '' || message === '') {
               this.error = true;
 
               setTimeout(() => {

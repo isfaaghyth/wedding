@@ -37,11 +37,15 @@
                                 <div class="col mb-4">
                                   <div class="card">
                                     <div class="card-body">
-                                      <h5 class="card-title">"{{ prayer.message }}"</h5>
-                                      <p class="card-text">
-                                        <img v-bind:src="prayer.avatar" class="rounded-circle" alt="img" style="width: 30px; height: 30px;">
-                                        <small class="text-muted">{{ prayer.username }}</small>
-                                      </p>
+                                      <h5 class="card-title">{{ prayer.message }}</h5>
+                                      <br>
+                                      <div class="card-text d-flex flex-row">
+                                        <img v-bind:src="prayer.avatar" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
+                                        <div>
+                                          <small class="text-muted">{{ prayer.username === '' ? '#orangbaik' : '@'+prayer.username }}</small>
+                                          <p class="card-text">{{ prayer.name }}</p>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
